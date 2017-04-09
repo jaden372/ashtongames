@@ -1,0 +1,200 @@
+import random
+p_Xspot=4
+p_Yspot=4
+score=0
+Height=8
+Length=8
+s_Xspot=random.randint(1,Length-1)
+s_Yspot=random.randint(1,Height-1)
+Ans=0
+Insert=0
+move=0
+start=0
+
+while move<100 :
+	if Ans < 1 :
+		if start==1:
+			print "Score : ",
+			print score,
+			print "    move : ",
+			print move,
+			print (" ")
+		if start==0:
+			Insert=raw_input("press any key to start game : ")
+		else:
+			Insert=raw_input("Insert within t,f,u,k,g,b,j,n : ")
+		if start==1:
+			if Insert == "t":
+				if p_Xspot>0:
+					if p_Yspot>1:
+						p_Xspot=p_Xspot-1
+						p_Yspot=p_Yspot-2
+					else:
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			if Insert == "f":
+				if p_Xspot>1:
+					if p_Yspot>0:
+						p_Xspot=p_Xspot-2
+						p_Yspot=p_Yspot-1
+					else: 
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			elif Insert == "g":
+				if p_Yspot<Height-1:
+					if p_Xspot>1:
+						p_Yspot=p_Yspot+1
+						p_Xspot=p_Xspot-2	
+					else:
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			elif Insert == "b":
+				if p_Yspot<Height-2:
+					if p_Xspot>0:
+						p_Yspot=p_Yspot+2
+						p_Xspot=p_Xspot-1
+				else:
+					move=move-1
+				Ans=1
+			elif Insert == "k":
+				if p_Yspot>0:
+					if p_Xspot<Length-2:
+						p_Xspot=p_Xspot+2
+						p_Yspot=p_Yspot-1
+					else:
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			elif Insert == "u":
+				if p_Yspot>1:
+					if p_Xspot<Length-1:
+						p_Xspot=p_Xspot+1
+						p_Yspot=p_Yspot-2
+					else:
+						move=move-1
+				else :
+					move=move-1
+				Ans=1
+			elif Insert == "j":
+				if p_Xspot<Length-2:
+					if p_Yspot<Height-1:
+						p_Xspot=p_Xspot+2
+						p_Yspot=p_Yspot+1
+					else:
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			elif Insert == "n":
+				if p_Xspot<Length-1:
+					if p_Yspot<Height-2:
+						p_Xspot=p_Xspot+1
+						p_Yspot=p_Yspot+2
+					else:
+						move=move-1
+				else:
+					move=move-1
+				Ans=1
+			else :
+				print "Plz answer correctly"
+				move=move-1
+			move=move+1
+		else:
+			start=1
+			print "Game start!"
+	Ans=0
+	if p_Yspot>s_Yspot:
+		for first11 in range(0,s_Yspot):
+			for first12 in range(0, Length):
+				print "O",
+			print (" ")
+		for first21 in range(0, s_Xspot):
+			print "O",
+		print "X",
+		for first22 in range(0, Length-s_Xspot-1):
+			print "O",
+		print (" ")
+		for first31 in range(0,p_Yspot-s_Yspot-1):
+			for first32 in range(0, Length):
+				print "O",
+			print (" ")
+		for first41 in range(0,p_Xspot):
+			print "O",
+		print "A",
+		for first42 in range(0,Length-p_Xspot-1):
+			print "O",
+		print (" ")
+		for first51 in range(0,Height-p_Yspot-1):
+			for first52 in range(0, Length):
+				print "O",
+			print (" ")
+	elif p_Yspot<s_Yspot:
+		for second11 in range(0,p_Yspot):
+			for second12 in range(0, Length):
+				print "O",
+			print (" ")
+		for second21 in range(0, p_Xspot):
+			print "O",
+		print "A",
+		for second22 in range(0, Length-p_Xspot-1):
+			print "O",
+		print (" ")
+		for second31 in range(0, s_Yspot-p_Yspot-1):
+			for second32 in range(0, Length):
+				print"O",
+			print (" ")
+		for second41 in range(0, s_Xspot):
+			print "O",
+		print "X",
+		for second42 in range(0, Length-s_Xspot-1):
+			print "O",
+		print (" ")
+		for second51 in range(0, Height-s_Yspot-1):
+			for second52 in range(0, Length):
+				print "O",
+			print (" ")
+	else:
+		if p_Xspot==s_Xspot:
+			score=score+1
+			s_Xspot=random.randint(1,Length-1)
+			s_Yspot=random.randint(1,Height-1)
+			Ans=1
+		else:	
+			for third11 in range(0,p_Yspot): 
+				for third12 in range(0, Length):
+					print "O",
+				print (" ")
+			if p_Xspot>s_Xspot:
+				for third21 in range(0,s_Xspot):
+					print "O",
+				print "X",
+				for third22 in range(0,p_Xspot-s_Xspot-1):
+					print "O",
+				print "A",
+				for third23 in range(0,Length-p_Xspot-1):
+					print "O",
+		
+			else:
+				for third31 in range(0,p_Xspot):
+					print"O",
+				print "A",
+				for third32 in range(0,s_Xspot-p_Xspot-1):
+					print"O",
+				print "X",
+				for third33 in range(0,Length-s_Xspot-1):
+					print "O",
+			print (" ")
+			for third41 in range(0, Height-p_Yspot-1):
+				for third42 in range(0, Length):
+					print"O",
+				print (" ")
+print "Game over!"
+print "Your score is : ",
+print score
